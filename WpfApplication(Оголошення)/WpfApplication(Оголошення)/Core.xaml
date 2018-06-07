@@ -4827,7 +4827,7 @@
     </Style>
 
     <JournalEntryUnifiedViewConverter x:Key="JournalEntryUnifiedViewConverterNavigationWindow"/>
-
+    
     <Style TargetType="{x:Type NavigationWindow}">
         <Setter Property="SnapsToDevicePixels" Value="True"/>
         <Setter Property="Background" Value="{StaticResource ControlLightBackground}"/>

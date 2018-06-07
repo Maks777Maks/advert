@@ -5,9 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApplication_Оголошення_"
         mc:Ignorable="d"
-        Title="Autorization" Height="400" Width="400">
+        Title="Autorization" Height="500" Width="400"
+        Background="#333" ResizeMode="CanResizeWithGrip">
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="40"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
@@ -17,33 +22,32 @@
             <ColumnDefinition Width="100"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <TextBlock Grid.Row="0" Text="Логин"/>
-        <TextBlock Grid.Row="1"  Text="Пароль"/>
-        <TextBox Name="Log" Grid.Column="1" Grid.Row="0"/>
-        <TextBox Name="Pass" Grid.Column="1" Grid.Row="1"/>
-        <Button Content="Войти" Grid.Column="0" Grid.Row="2" Click="Enter_Click"/>
-        <Button Content="Зарегистрироватся" Grid.Column="1" Grid.Row="2" Click="Button_Click"/>
-        <!--<Expander  IsExpanded="True" IsEnabled="False">-->
-            <Grid Name="gr" Grid.Row="3" Grid.ColumnSpan="2" Visibility="Collapsed">
-                <Grid.RowDefinitions>
-                <RowDefinition Height="100"/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                </Grid.ColumnDefinitions>
-                <TextBlock Grid.Row="1" Text="Логин"/>
-                <TextBlock Grid.Row="2"  Text="Пароль"/>
-                <TextBlock Grid.Row="3"  Text="Подтвердить Пароль"/>
-                <TextBox Grid.Column="1" Grid.Row="1"/>
-                <TextBox Grid.Column="1" Grid.Row="2"/>
-                <TextBox Grid.Column="1" Grid.Row="3"/>
-            <Button Grid.Row="4" Content="OK"/>
-        </Grid>
-        <!--</Expander>-->
+        <StackPanel Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <Label>Логин</Label>
+            <Label>Пароль</Label>
+        </StackPanel>
+        <StackPanel Grid.RowSpan="2" Grid.Column="1">
+            <TextBox Name="Log" Margin="2,2,2,2"/>
+            <PasswordBox Name="Pass" Margin="2,2,2,2"/>
+        </StackPanel>
+        <Button Content="Войти" Grid.Column="0" Grid.Row="2" Click="Enter_Click" Margin="12,12,12,12"/>
+        <ToggleButton Style="{StaticResource ToggleButton_Occupado}" Width="76" Margin="16" Grid.Column="1" Grid.Row="2" Click="Button_Click"/>
+
+        <StackPanel Name="stack1" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="4" Grid.RowSpan="3" Grid.Column="0" Visibility="Collapsed" Height="200">
+            <Label HorizontalAlignment="Center" Content="Логин" Height="40" />
+            <Label HorizontalAlignment="Center" Content="Пароль" Height="40" />
+            <Label HorizontalAlignment="Center" Content="Подтвердить" Height="40" />
+            <Label HorizontalAlignment="Center" Content="Город" Height="35" />
+            <Label HorizontalAlignment="Center" Content="Телефон" Height="25" />
+        </StackPanel>
+        <StackPanel Name="stack2" Grid.Row="4" Grid.RowSpan="3" Grid.Column="1" Visibility="Collapsed" Height="200">
+            <TextBox Name="Log1" Margin="2,2,2,2"/>
+            <TextBox Name="Pass1" Margin="2,2,2,2"/>
+            <TextBox Name="Pass2" Margin="2,2,2,2"/>
+            <ComboBox Name="Combo1" Margin="2,2,2,2"/>
+            <TextBox Name="Pass4" Margin="2,2,2,2"/>
+            <Button Grid.Row="7" Grid.Column="1" Width="150" Content="OK"/>
+            </StackPanel>
+        
     </Grid>
 </Window>

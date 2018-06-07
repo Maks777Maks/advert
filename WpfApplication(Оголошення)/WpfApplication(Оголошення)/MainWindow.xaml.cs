@@ -47,7 +47,7 @@ namespace WpfApplication_Оголошення_
 
         private void Click_Autorization(object sender, RoutedEventArgs e)
         {
-            Autorization _autorization = new Autorization(tmp,_city);
+            Autorization _autorization = new Autorization(tmp, _city);
             if(_autorization.ShowDialog()==true)
             {
                 flag = true;
