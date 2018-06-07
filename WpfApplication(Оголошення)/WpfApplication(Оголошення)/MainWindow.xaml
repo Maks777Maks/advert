@@ -22,7 +22,7 @@
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <Button Grid.Column="2" Content="+ Подать объявление"/>
+        <Button Grid.Column="2" Content="+ Подать объявление" Click="ButtonAddadvert_Click"/>
         <Button Grid.Column="3" Content="Войти" Click="Click_Autorization"/>
         <TextBlock Grid.Column="4" Name="Us"/>
         <TextBox Grid.Column="1" Grid.Row="1"/>

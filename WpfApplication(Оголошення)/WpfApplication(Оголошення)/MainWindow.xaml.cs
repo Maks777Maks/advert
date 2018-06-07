@@ -21,9 +21,11 @@ namespace WpfApplication_Оголошення_
     public partial class MainWindow : Window
     {
         List<string> _heading = new List<string>();
+        List<string> _city = new List<string>();
 
         User tmp = new User();
         bool flag = false;
+        Ads ad = new Ads();
 
         public MainWindow()
         {
@@ -45,12 +47,23 @@ namespace WpfApplication_Оголошення_
 
         private void Click_Autorization(object sender, RoutedEventArgs e)
         {
-            Autorization _autorization = new Autorization(tmp);
+            Autorization _autorization = new Autorization(tmp,_city);
             if(_autorization.ShowDialog()==true)
             {
                 flag = true;
                 Us.Text = tmp.Name;
             }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ButtonAddadvert_Click(object sender, RoutedEventArgs e)
+        {
+             AddAd Add__Ad = new AddAd(_heading,ad,tmp);
+            Add__Ad.ShowDialog();
         }
     }
 }

@@ -56,7 +56,7 @@
                                 <VisualState x:Name="Unfocused" />
                             </VisualStateGroup>
                         </VisualStateManager.VisualStateGroups>
-                        <Border x:Name="DisabledElement" Background="{StaticResource DisabledBrush}" CornerRadius="2" Opacity="0">
+                        <Border x:Name="DisabledElement" Background="{StaticResource DisabledBrush}" CornerRadius="2" Opacity="0" >
                             <Border BorderBrush="{StaticResource DisabledBorderBrush}" BorderThickness="0,0,1,1" CornerRadius="2" />
                         </Border>
                         <Border x:Name="BorderVisual" Background="Transparent" CornerRadius="4" BorderBrush="{StaticResource BorderBrushVisual}" BorderThickness="{StaticResource ThicknessButtonVisual}" />

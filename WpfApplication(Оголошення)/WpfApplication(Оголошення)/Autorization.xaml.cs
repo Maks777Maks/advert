@@ -23,10 +23,11 @@ namespace WpfApplication_Оголошення_
         List<User> _users = new List<User>();
 
         User tmp = new User();
-        public Autorization(User a)
+        public Autorization(User a,List<string> list)
         {
             InitializeComponent();
-            tmp = a;
+            a = tmp;
+           
         }
 
         private void Enter_Click(object sender, RoutedEventArgs e)
@@ -38,6 +39,7 @@ namespace WpfApplication_Оголошення_
                     if(i.Password==Pass.Text)
                     {
                         this.DialogResult = true;
+                        tmp = i;
                         this.Close();
                     }
                 }

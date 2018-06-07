@@ -1,0 +1,45 @@
+﻿<Window x:Class="WpfApplication_Оголошення_.AddAd"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApplication_Оголошення_"
+        mc:Ignorable="d"
+        Title="AddAd" Height="450" Width="800"
+        Background="#333" ResizeMode="CanResizeWithGrip">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+
+        
+        <Image  Grid.Column="0" Grid.Row="0" Name="Logotip"  Source="OLX_Logotip.jpg" MouseDown="Logotip_MouseDown" />
+   
+        <Label Grid.Column="1" Grid.Row="0" Content="Заголовок" FontSize="25"></Label>
+        <TextBox Grid.Column="2" Grid.Row="0" Grid.ColumnSpan="3"  />
+        <Label Grid.Column="1" Grid.Row="1" Content="Рубрика" FontSize="25"></Label>
+        <ComboBox Grid.Column="2" Grid.Row="1" Grid.ColumnSpan="2" Name="ComboBox1"/>
+        <Label Grid.Column="1" Grid.Row="2" Content="Опис" FontSize="25"></Label>
+        <TextBox Grid.Column="2" Grid.Row="2" Grid.ColumnSpan="3" Grid.RowSpan="2" MinLines="2" Height="100" FontSize="20" TextChanged="TextBox_TextChanged" TextWrapping="Wrap"  />
+        <Expander Grid.Row="3" Header="Ваші контактні дані" FontSize="25" Grid.ColumnSpan="2" Name="Exp1">
+            <StackPanel Name="StackPanel1">
+                <TextBlock  Name="City"/>
+                <TextBlock  Name="Tel"/>
+                <TextBlock  Name="Login"/>
+            </StackPanel>
+        </Expander>
+    </Grid>
+</Window>
