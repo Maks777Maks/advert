@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApplication_Оголошення_"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="MainWindow" Height="650" Width="1200">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition />
@@ -22,7 +22,11 @@
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <Button Grid.Column="3" Template="{DynamicResource BtnTemplate}" Content="+ Подать объявление"/>
-        <Button Grid.Column="4" Template="{DynamicResource BtnTemplate}" Content="Войти" Click="Click_Autorization"/>
+        <Button Grid.Column="2" Content="+ Подать объявление"/>
+        <Button Grid.Column="3" Content="Войти" Click="Click_Autorization"/>
+        <TextBlock Grid.Column="4" Name="Us"/>
+        <TextBox Grid.Column="1" Grid.Row="1"/>
+        <TextBox Grid.Column="2" Grid.Row="1"/>
+        <ComboBox Grid.Column="3" Grid.Row="1" Name="heading"/>
     </Grid>
 </Window>

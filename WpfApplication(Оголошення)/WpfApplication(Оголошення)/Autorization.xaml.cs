@@ -19,9 +19,45 @@ namespace WpfApplication_Оголошення_
     /// </summary>
     public partial class Autorization : Window
     {
-        public Autorization()
+        bool flag = false;
+        List<User> _users = new List<User>();
+
+        User tmp = new User();
+        public Autorization(User a)
         {
             InitializeComponent();
+            tmp = a;
+        }
+
+        private void Enter_Click(object sender, RoutedEventArgs e)
+        {
+            foreach(User i in _users)
+            {
+                if(i.Login==Log.Text)
+                {
+                    if(i.Password==Pass.Text)
+                    {
+                        this.DialogResult = true;
+                        this.Close();
+                    }
+                }
+            }
+            this.DialogResult = false;
+            this.Close();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            if (flag == false)
+            {
+                gr.Visibility = Visibility.Visible;
+                flag = true;
+            }
+            else
+            {
+                gr.Visibility = Visibility.Collapsed;
+                flag = false;
+            }
         }
     }
 }

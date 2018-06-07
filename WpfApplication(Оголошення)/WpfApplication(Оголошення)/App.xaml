@@ -4,6 +4,13 @@
              xmlns:local="clr-namespace:WpfApplication_Оголошення_"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-        <ResourceDictionary Source="pack://application:,,,/StyleLibrary;component/Style.xaml"/>
+        <!--<ResourceDictionary Source="pack://application:,,,/StyleLibrary;component/Style.xaml"/>-->
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Core.xaml"/>
+                <ResourceDictionary Source="/Icons.xaml"/>
+                <ResourceDictionary Source="/Brushes.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>
