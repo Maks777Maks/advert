@@ -23,10 +23,14 @@ namespace WpfApplication_Оголошення_
         List<User> _users = new List<User>();
 
         User tmp = new User();
-        public Autorization(User a)
+        public Autorization(User a, List<string> list)
         {
             InitializeComponent();
-            tmp = a;
+            a = tmp;
+            foreach (string i in list)
+            {
+                Combo1.Items.Add(i);
+            }
         }
 
         private void Enter_Click(object sender, RoutedEventArgs e)
@@ -35,9 +39,10 @@ namespace WpfApplication_Оголошення_
             {
                 if(i.Login==Log.Text)
                 {
-                    if(i.Password==Pass.Text)
+                    if(i.Password==Pass.Password)
                     {
                         this.DialogResult = true;
+                        tmp = i;
                         this.Close();
                     }
                 }
@@ -50,14 +55,17 @@ namespace WpfApplication_Оголошення_
         {
             if (flag == false)
             {
-                gr.Visibility = Visibility.Visible;
+                stack1.Visibility = Visibility.Visible;
+                stack2.Visibility = Visibility.Visible;
                 flag = true;
             }
             else
             {
-                gr.Visibility = Visibility.Collapsed;
+                stack1.Visibility = Visibility.Collapsed;
+                stack2.Visibility = Visibility.Collapsed;
                 flag = false;
             }
+
         }
     }
 }
