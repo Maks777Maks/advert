@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Xml.Serialization;
 
 namespace WpfApplication_Оголошення_
 {
@@ -22,6 +24,8 @@ namespace WpfApplication_Оголошення_
     {
         List<string> _heading = new List<string>();
         List<string> _city = new List<string>();
+        public List<Ads> Adverts = new List<Ads>();
+        public List<User> Users = new List<User>();
 
         User tmp = new User();
         bool flag = false;
@@ -63,7 +67,31 @@ namespace WpfApplication_Оголошення_
         private void ButtonAddadvert_Click(object sender, RoutedEventArgs e)
         {
              AddAd Add__Ad = new AddAd(_heading,ad,tmp);
-            Add__Ad.ShowDialog();
+             Add__Ad.ShowDialog();
+             Adverts.Add(ad);
+        }
+
+        private void FormClosing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (Adverts.Count > 0&& Users.Count!=0)
+            {
+                Type[] types = { typeof(Ads) };
+                Type[] types1 = { typeof(User) };
+                XmlSerializer xml1 = new XmlSerializer(typeof(List<User>), types1);
+                XmlSerializer xml = new XmlSerializer(typeof(List<Ads>), types);
+                using (TextWriter t = new StreamWriter("Adverts"))
+                {
+                    xml.Serialize(t, Adverts);
+
+                }
+
+                using (TextWriter t1 = new StreamWriter("Users"))
+                {
+                    xml1.Serialize(t1, Users);
+                }
+            }
+            else
+                this.Close();
         }
     }
 }

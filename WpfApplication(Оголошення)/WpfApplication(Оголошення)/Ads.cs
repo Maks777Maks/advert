@@ -10,7 +10,7 @@ namespace WpfApplication_Оголошення_
     {
         string _catygory;
         string _text;
-        string _image;
+        List<string> images = new List<string>();
         DateTime _date;
         User _user;
 
@@ -18,9 +18,21 @@ namespace WpfApplication_Оголошення_
         {
             _catygory = "noname";
             _text = "noname";
-            _image = "noname";
+            images = null;
             _date = DateTime.Now;
             _user = new User();
+        }
+
+
+
+
+        public Ads(string catigory,string text,List<string>imag,DateTime dt,User user)
+        {
+            _catygory = catigory;
+            _text = text;
+            images = imag;
+            _date = dt;
+            _user = user;
         }
     }
 }

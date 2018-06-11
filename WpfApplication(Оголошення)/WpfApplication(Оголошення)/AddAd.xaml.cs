@@ -21,7 +21,7 @@ namespace WpfApplication_Оголошення_
     {
         User user;
         Ads Ad;
-        public AddAd(List<string> heading,Ads ad,User user)
+        public AddAd(List<string> heading, Ads ad, User user)
         {
             InitializeComponent();
             ComboBox1.ItemsSource = heading;
@@ -56,6 +56,34 @@ namespace WpfApplication_Оголошення_
         private void Logotip_MouseDown(object sender, MouseButtonEventArgs e)
         {
             this.Close();
+        }
+
+        private void AddImage(object sender, RoutedEventArgs e)
+        {
+            Microsoft.Win32.OpenFileDialog ofd = new Microsoft.Win32.OpenFileDialog();
+            if (true == ofd.ShowDialog())
+
+            {
+                BitmapImage bi = new BitmapImage(new Uri(ofd.FileName));
+                Image i = new Image();
+                i.Source = bi;
+                (sender as Button).Content = i;
+
+
+            }
+        }
+
+        private void AddAdvert(object sender, RoutedEventArgs e)
+        {
+            List<string> images = new List<string>();
+            if ((Image1.Content as Image) != null && (Image2.Content as Image) != null && (Image3.Content as Image) != null)
+            {
+                images.Add((Image1.Content as Image).Source.ToString());
+                images.Add((Image2.Content as Image).Source.ToString());
+                images.Add((Image3.Content as Image).Source.ToString());
+                Ads a = new Ads(ComboBox1.SelectedItem.ToString(), Text.Text, images, new DateTime(), user);
+
+            }
         }
     }
 }
