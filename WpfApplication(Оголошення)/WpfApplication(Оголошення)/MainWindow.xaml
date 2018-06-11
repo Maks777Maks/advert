@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:WpfApplication_Оголошення_"
         mc:Ignorable="d"
         Title="MainWindow" Height="650" Width="1200"
-        Background="#333" ResizeMode="CanResizeWithGrip">
+        Background="#333" ResizeMode="CanResizeWithGrip" Closing="FormClosing">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
@@ -17,11 +17,12 @@
             <RowDefinition />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
+            <ColumnDefinition Width="33*"/>
+            <ColumnDefinition Width="205*"/>
+            <ColumnDefinition Width="238*"/>
+            <ColumnDefinition Width="239*"/>
+            <ColumnDefinition Width="238*"/>
+            <ColumnDefinition Width="239*"/>
         </Grid.ColumnDefinitions>
         <StackPanel Grid.Column="3"  Grid.ColumnSpan="3">
             <Menu Margin="10">
