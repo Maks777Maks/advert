@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel;
 
 namespace WpfApplication_Оголошення_
 {
-    public class User
+    public class User: IDataErrorInfo
     {
         string _login;
         string _password;
@@ -15,10 +16,21 @@ namespace WpfApplication_Оголошення_
         string _tel;
 
         public User()
-        {
+        { 
             _login = "noname";
             _password = "noname";
             _city = "noname";
+            _name = "noname";
+            _tel = "noname";
+        }
+
+        public User(string a, string b, string c, string d, string e)
+        {
+            _login = a;
+            _password = b;
+            _city = c;
+            _name = d;
+            _tel = e;
         }
 
         public string Login
@@ -49,6 +61,39 @@ namespace WpfApplication_Оголошення_
         {
             set { _tel = value; }
             get { return _tel; }
+        }
+
+        public string Error
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        public string this[string columnName]
+        {
+            get
+            {
+                string m = "";
+                switch(columnName)
+                {
+                    case "Login":
+                        if(_login.Contains("loh"))
+                        {
+                            m = "bad";
+                        }
+                        break;
+                    case "Password":
+                        if(_password.Length<8)
+                        {
+                            m = "small";
+                        }
+                        break;
+                }
+                return m;
+
+            }
         }
     }
 }
