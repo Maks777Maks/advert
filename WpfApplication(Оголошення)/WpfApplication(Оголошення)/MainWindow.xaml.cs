@@ -137,14 +137,14 @@ namespace WpfApplication_Оголошення_
 
         private void ButtonAddadvert_Click(object sender, RoutedEventArgs e)
         {
-             AddAd Add__Ad = new AddAd(_heading,ad,tmp);
+             AddAd Add__Ad = new AddAd(_heading,ad,tmp1);
              Add__Ad.ShowDialog();
              Adverts.Add(ad);
         }
 
         private void FormClosing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            System.Windows.Forms.MessageBox.Show($"count: {Adverts.Count}");
+            //System.Windows.Forms.MessageBox.Show($"count: {Adverts.Count}");
 
             if (Adverts.Count > 0 && Users.Count > 0)
             {
@@ -163,7 +163,7 @@ namespace WpfApplication_Оголошення_
                 {
 
 
-                    xml1.Serialize(t1, Users);
+                     xml1.Serialize(t1, Users);
                 }
             }
         }
@@ -172,6 +172,11 @@ namespace WpfApplication_Оголошення_
         {
            
             
+        }
+
+        private void Click_Exit(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

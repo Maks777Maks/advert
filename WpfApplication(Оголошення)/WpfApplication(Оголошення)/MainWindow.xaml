@@ -17,10 +17,10 @@
             <RowDefinition />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="33*"/>
+            <!--<ColumnDefinition Width="33*"/>-->
             <ColumnDefinition Width="205*"/>
-            <ColumnDefinition Width="43*"/>
-            <ColumnDefinition Width="36*"/>
+            <!--<ColumnDefinition Width="43*"/>
+            <ColumnDefinition Width="36*"/>-->
             <ColumnDefinition Width="159*"/>
             <ColumnDefinition Width="239*"/>
             <ColumnDefinition Width="238*"/>
@@ -31,7 +31,7 @@
                 <MenuItem Width="150" Header="  + Подать объявление  "/>
                 <MenuItem Width="100" Header="  Войти  " Click="Click_Autorization" />
                 <MenuItem Width="100" Name="Us" Header="Binding Path=Name"/>
-                <MenuItem Width="100" Header="  Выйти  " Click="Click_Exit"/>
+                <MenuItem Width="100" Header="  Выйти" Click="Click_Exit"  />
             </Menu>
         </StackPanel>
         <Grid Grid.Column="1" Grid.Row="1">
