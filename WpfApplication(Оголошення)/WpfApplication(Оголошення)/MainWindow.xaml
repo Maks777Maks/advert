@@ -28,9 +28,9 @@
         </Grid.ColumnDefinitions>
         <StackPanel Grid.Column="3"  Grid.ColumnSpan="3">
             <Menu Margin="10">
-                <MenuItem Width="150" Header="  + Подать объявление  "/>
+                <MenuItem Width="150" Header="  + Подать объявление  " Click="ButtonAddadvert_Click" />
                 <MenuItem Width="100" Header="  Войти  " Click="Click_Autorization" />
-                <MenuItem Width="100" Name="Us" Header="Binding Path=Name"/>
+                <MenuItem Width="100" Name="Us" Header="{Binding Path=Name}"/>
                 <MenuItem Width="100" Header="  Выйти" Click="Click_Exit"  />
             </Menu>
         </StackPanel>
