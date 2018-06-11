@@ -48,13 +48,11 @@ namespace WpfApplication_Оголошення_
                     if(i.Password==Pass.Password)
                     {
                         this.DialogResult = true;
-                        tmp = i;
-                        MessageBox.Show(tmp.Name);
+                        tmp=i;
                         this.Close();
                     }
                 }
             }
-           // this.DialogResult = false;
             this.Close();
         }
 

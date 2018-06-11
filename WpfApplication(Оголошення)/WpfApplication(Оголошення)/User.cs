@@ -17,11 +17,11 @@ namespace WpfApplication_Оголошення_
 
         public User()
         { 
-            _login = "noname";
-            _password = "noname";
-            _city = "noname";
-            _name = "noname";
-            _tel = "noname";
+            _login = "";
+            _password = "";
+            _city = "";
+            _name = "";
+            _tel = "";
         }
 
         public User(string a, string b, string c, string d, string e)
@@ -35,7 +35,8 @@ namespace WpfApplication_Оголошення_
 
         public string Login
         {
-            set { _login = value; }
+            set {
+                _login = value; }
             get { return _login; }
         }
 

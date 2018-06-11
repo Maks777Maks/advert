@@ -83,11 +83,15 @@ namespace WpfApplication_Оголошення_
         private void Click_Autorization(object sender, RoutedEventArgs e)
         {
             Autorization _autorization = new Autorization(tmp1, _city);
-            if(_autorization.ShowDialog()==true)
+            if (tmp1 == null)
             {
-                flag = true;
-                tmp1 = _autorization.tmp;
-               // Us.Header = tmp1.Name;
+                if (_autorization.ShowDialog() == true)
+                {
+                    flag = true;
+                    tmp1 = _autorization.tmp;
+                    Us.DataContext = tmp1;
+                    // Us.Header = tmp1.Name;
+                }
             }
         }
 
@@ -98,32 +102,38 @@ namespace WpfApplication_Оголошення_
 
         private void ButtonAddadvert_Click(object sender, RoutedEventArgs e)
         {
-             AddAd Add__Ad = new AddAd(_heading,ad,tmp);
+             AddAd Add__Ad = new AddAd(_heading,ad,tmp1);
              Add__Ad.ShowDialog();
              Adverts.Add(ad);
         }
 
         private void FormClosing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            if (Adverts.Count > 0&& Users.Count!=0)
-            {
-                Type[] types = { typeof(Ads) };
-                Type[] types1 = { typeof(User) };
-                XmlSerializer xml1 = new XmlSerializer(typeof(List<User>), types1);
-                XmlSerializer xml = new XmlSerializer(typeof(List<Ads>), types);
-                using (TextWriter t = new StreamWriter("Adverts"))
-                {
-                    xml.Serialize(t, Adverts);
+            //if (Adverts.Count > 0&& Users.Count!=0)
+            //{
+            //    Type[] types = { typeof(Ads) };
+            //    Type[] types1 = { typeof(User) };
+            //    XmlSerializer xml1 = new XmlSerializer(typeof(List<User>), types1);
+            //    XmlSerializer xml = new XmlSerializer(typeof(List<Ads>), types);
+            //    using (TextWriter t = new StreamWriter("Adverts"))
+            //    {
+            //        xml.Serialize(t, Adverts);
 
-                }
+            //    }
 
-                using (TextWriter t1 = new StreamWriter("Users"))
-                {
-                    xml1.Serialize(t1, Users);
-                }
-            }
-            else
-                this.Close();
+            //    using (TextWriter t1 = new StreamWriter("Users"))
+            //    {
+            //        xml1.Serialize(t1, Users);
+            //    }
+            //}
+            //else
+            //    this.Close();
+        }
+
+        private void Click_Exit(object sender, RoutedEventArgs e)
+        {
+            tmp1 = null;
+            Us.DataContext = tmp1;
         }
     }
 }

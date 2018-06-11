@@ -27,8 +27,8 @@
             <Label>Пароль</Label>
         </StackPanel>
         <StackPanel Grid.RowSpan="2" Grid.Column="1">
-            <TextBox Text="Binding Path=Login" Name="Log" Margin="2,2,2,2"/>
-            <PasswordBox Password="Binding Path=Password" Name="Pass" Margin="2,2,2,2"/>
+            <TextBox Text="{Binding Path=Login}" Name="Log" Margin="2,2,2,2"/>
+            <PasswordBox Name="Pass" Margin="2,2,2,2"/>
         </StackPanel>
         <Button Content="Войти" Grid.Column="0" Grid.Row="2" Click="Enter_Click" Height="100" />
         <StackPanel Grid.Column="1" Grid.Row="2">
