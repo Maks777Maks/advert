@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Xml.Serialization;
+using System.ComponentModel;
 
 namespace WpfApplication_Оголошення_
 {
@@ -26,6 +27,7 @@ namespace WpfApplication_Оголошення_
         List<string> _city = new List<string>();
         public List<Ads> Adverts = new List<Ads>();
         public List<User> Users = new List<User>();
+        
 
         User tmp = new User();
         bool flag = false;
@@ -34,6 +36,44 @@ namespace WpfApplication_Оголошення_
         public MainWindow()
         {
             InitializeComponent();
+
+
+            try
+            {
+                using (TextReader t = new StreamReader("Adverts"))
+                {
+                    Type[] types = new Type[] { typeof(Ads) };
+
+                    XmlSerializer xml = new XmlSerializer(typeof(List<Ads>), types);
+                    Adverts  = (List<Ads>)xml.Deserialize(t);
+                    
+                }
+
+
+                using (TextReader t1 = new StreamReader("Users"))
+                {
+                    Type[] types = new Type[] { typeof(User) };
+
+                    XmlSerializer xml = new XmlSerializer(typeof(List<User>), types);
+                    Users = (List<User>)xml.Deserialize(t1);
+
+                }
+            }
+            catch (FieldAccessException f)
+            {
+                Console.WriteLine(f.Message);
+            }
+
+            catch (FileNotFoundException f)
+            {
+                Console.WriteLine(f.Message);
+            }
+
+
+
+
+
+
             _heading.Add("Все рубрики");
             _heading.Add("Недвижимость");
             _heading.Add("Транспорт");
@@ -56,6 +96,7 @@ namespace WpfApplication_Оголошення_
             {
                 flag = true;
                 Us.Text = tmp.Name;
+               // Users = _autorization._users;
             }
         }
 
@@ -73,8 +114,11 @@ namespace WpfApplication_Оголошення_
 
         private void FormClosing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            if (Adverts.Count > 0&& Users.Count!=0)
+            System.Windows.Forms.MessageBox.Show($"count: {Adverts.Count}");
+
+            if (Adverts.Count > 0 && Users.Count > 0)
             {
+
                 Type[] types = { typeof(Ads) };
                 Type[] types1 = { typeof(User) };
                 XmlSerializer xml1 = new XmlSerializer(typeof(List<User>), types1);
@@ -87,11 +131,17 @@ namespace WpfApplication_Оголошення_
 
                 using (TextWriter t1 = new StreamWriter("Users"))
                 {
+
+
                     xml1.Serialize(t1, Users);
                 }
             }
-            else
-                this.Close();
+        }
+
+        private void FormClosed(object sender, EventArgs e)
+        {
+           
+            
         }
     }
 }
