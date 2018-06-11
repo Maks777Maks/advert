@@ -22,15 +22,21 @@ namespace WpfApplication_Оголошення_
         bool flag = false;
         public List<User> _users = new List<User>();
 
-        User tmp = new User();
+        public User tmp = new User();
         public Autorization(User a, List<string> list)
         {
             InitializeComponent();
-            a = tmp;
+            tmp.Login = "Maks";
+            tmp.Password = "1111";
+            tmp.Name = "Maks";
+            _users.Add(tmp);
             foreach (string i in list)
             {
                 Combo1.Items.Add(i);
             }
+            this.DataContext = tmp;
+            //Label.FontFamilyProperty.OverrideMetadata(typeof(Label),
+            //new FrameworkPropertyMetadata(new FontFamily("Viner Hand ITC")));
         }
 
         private void Enter_Click(object sender, RoutedEventArgs e)
@@ -43,11 +49,12 @@ namespace WpfApplication_Оголошення_
                     {
                         this.DialogResult = true;
                         tmp = i;
+                        MessageBox.Show(tmp.Name);
                         this.Close();
                     }
                 }
             }
-            this.DialogResult = false;
+           // this.DialogResult = false;
             this.Close();
         }
 

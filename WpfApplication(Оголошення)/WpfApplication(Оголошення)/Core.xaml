@@ -6,6 +6,21 @@
         <ResourceDictionary Source="Brushes.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
+    <!--<Style TargetType="{x:Type Control}" x:Key="ControlStyle">
+        <Setter Property="FontFamily" Value="Viner Hand ITC"/>
+        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="Foreground" Value="{StaticResource ControlBackgroundOver}"/>
+        <Setter Property="Margin" Value="10,10,10,6"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+    </Style>-->
+
+    <Style TargetType="{x:Type Label}">
+        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="FontFamily" Value="Viner Hand ITC"/>
+        <Setter Property="Foreground" Value="{StaticResource ControlBackgroundOver}"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+    </Style>
+    
     <!-- Button -->
     <Style TargetType="Button">
         <Setter Property="TextOptions.TextHintingMode" Value="Animated" />

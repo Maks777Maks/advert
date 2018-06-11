@@ -27,9 +27,8 @@ namespace WpfApplication_Оголошення_
         List<string> _city = new List<string>();
         public List<Ads> Adverts = new List<Ads>();
         public List<User> Users = new List<User>();
-        
 
-        User tmp = new User();
+        public User tmp1 = new User();
         bool flag = false;
         Ads ad = new Ads();
 
@@ -82,21 +81,52 @@ namespace WpfApplication_Оголошення_
             _heading.Add("fable");
             _heading.Add("Электроника");
             _heading.Add("Отдых и спорт");
-            
-            foreach(string i in _heading)
+
+            foreach (string i in _heading)
             {
-                heading.Items.Add(i);
+                combo_heading.Items.Add(i);
             }
+
+            _city.Add("Винница");
+            _city.Add("Луцьк");
+            _city.Add("Днепр");
+            _city.Add("Донецк");
+            _city.Add("Житомир");
+            _city.Add("Ужгород");
+            _city.Add("Запорожье");
+            _city.Add("Ивано-Франковск");
+            _city.Add("Киев");
+            _city.Add("Кировоград");
+            _city.Add("Луганск");
+            _city.Add("Львов");
+            _city.Add("Николаев");
+            _city.Add("Одесса");
+            _city.Add("Полтава");
+            _city.Add("Ровно");
+            _city.Add("Сумы");
+            _city.Add("Тернополь");
+            _city.Add("Харьков");
+            _city.Add("Херсон");
+            _city.Add("Хмельницк");
+            _city.Add("Черкассы");
+            _city.Add("Чернигов");
+            _city.Add("Черновцы");
+
+            foreach (string i in _city)
+            {
+                combo_city.Items.Add(i);
+            }
+            Us.DataContext = tmp1;
         }
 
         private void Click_Autorization(object sender, RoutedEventArgs e)
         {
-            Autorization _autorization = new Autorization(tmp, _city);
+            Autorization _autorization = new Autorization(tmp1, _city);
             if(_autorization.ShowDialog()==true)
             {
                 flag = true;
-                Us.Text = tmp.Name;
-               // Users = _autorization._users;
+                tmp1 = _autorization.tmp;
+               // Us.Header = tmp1.Name;
             }
         }
 
