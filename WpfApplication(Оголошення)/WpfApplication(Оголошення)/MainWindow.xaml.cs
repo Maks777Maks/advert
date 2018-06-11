@@ -177,6 +177,7 @@ namespace WpfApplication_Оголошення_
         private void Click_Exit(object sender, RoutedEventArgs e)
         {
 
+
         }
 
     }
