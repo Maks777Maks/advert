@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="AddAd" Height="450" Width="800"
         Background="#333" ResizeMode="CanResizeWithGrip">
-    <Grid>
+    <Grid >
         <Grid.RowDefinitions>
             <RowDefinition />
             <RowDefinition />
@@ -34,10 +34,27 @@
         <ComboBox Grid.Column="2" Grid.Row="1" Grid.ColumnSpan="2" Name="ComboBox1"/>
         <Label Grid.Column="1" Grid.Row="2" Content="Опис" FontSize="25"></Label>
         <TextBox Name="Text" Grid.Column="2" Grid.Row="2" Grid.ColumnSpan="3" Grid.RowSpan="2" MinLines="2" Height="100" FontSize="20" TextChanged="TextBox_TextChanged" TextWrapping="Wrap"  />
-        <Button Name="Image1" Grid.Column="2" Grid.Row="4" Grid.RowSpan="2" Content="+" FontSize="50" Click="AddImage" />
-        <Button Name="Image2" Grid.Column="3" Grid.Row="4" Grid.RowSpan="2" Content="+" FontSize="50" Click="AddImage"/>
-        <Button Name="Image3" Grid.Column="4" Grid.Row="4" Grid.RowSpan="2" Content="+" FontSize="50" Click="AddImage"/>
+       
         <Button Grid.Column="0" Grid.Row="5"  Content="Готово" Click="AddAdvert"/>
+        <Grid Grid.Column="2" Grid.Row="4" Grid.ColumnSpan="3" Grid.RowSpan="2" Name="Grid1">
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+                
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                
+            </Grid.ColumnDefinitions>
+            
+            
+            
+            <Button Name="Image1" Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" Content="+" FontSize="50" Click="AddImage" />
+            <Button Name="Image2" Grid.Column="1" Grid.Row="0" Grid.RowSpan="2" Content="+" FontSize="50" Click="AddImage"/>
+            <Button Name="Image3" Grid.Column="2" Grid.Row="0" Grid.RowSpan="2" Content="+" FontSize="50" Click="AddImage"/>
+        </Grid>
         <Expander Grid.Row="3" Header="Ваші контактні дані" FontSize="25" Grid.ColumnSpan="2" Name="Exp1">
             <StackPanel Name="StackPanel1">
                 <TextBlock  Name="City"/>

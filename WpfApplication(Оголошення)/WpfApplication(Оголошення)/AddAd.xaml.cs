@@ -76,14 +76,18 @@ namespace WpfApplication_Оголошення_
         private void AddAdvert(object sender, RoutedEventArgs e)
         {
             List<string> images = new List<string>();
-            if ((Image1.Content as Image) != null && (Image2.Content as Image) != null && (Image3.Content as Image) != null)
-            {
-                images.Add((Image1.Content as Image).Source.ToString());
-                images.Add((Image2.Content as Image).Source.ToString());
-                images.Add((Image3.Content as Image).Source.ToString());
-                Ads a = new Ads(ComboBox1.SelectedItem.ToString(), Text.Text, images, new DateTime(), user);
 
+            foreach(Button i in Grid1.Children)
+            {
+                if(i!=null)
+                {
+                    images.Add(i.Name);
+                }
             }
+            if(images.Count!=0)
+            Ad = new Ads(ComboBox1.SelectedItem.ToString(), Text.Text, images, new DateTime(), user);
+            this.Close();
+            
         }
     }
 }

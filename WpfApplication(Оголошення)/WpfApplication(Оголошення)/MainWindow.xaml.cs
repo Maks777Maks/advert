@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Xml.Serialization;
+using System.ComponentModel;
 
 namespace WpfApplication_Оголошення_
 {
@@ -34,6 +35,44 @@ namespace WpfApplication_Оголошення_
         public MainWindow()
         {
             InitializeComponent();
+
+
+            try
+            {
+                using (TextReader t = new StreamReader("Adverts"))
+                {
+                    Type[] types = new Type[] { typeof(Ads) };
+
+                    XmlSerializer xml = new XmlSerializer(typeof(List<Ads>), types);
+                    Adverts  = (List<Ads>)xml.Deserialize(t);
+                    
+                }
+
+
+                using (TextReader t1 = new StreamReader("Users"))
+                {
+                    Type[] types = new Type[] { typeof(User) };
+
+                    XmlSerializer xml = new XmlSerializer(typeof(List<User>), types);
+                    Users = (List<User>)xml.Deserialize(t1);
+
+                }
+            }
+            catch (FieldAccessException f)
+            {
+                Console.WriteLine(f.Message);
+            }
+
+            catch (FileNotFoundException f)
+            {
+                Console.WriteLine(f.Message);
+            }
+
+
+
+
+
+
             _heading.Add("Все рубрики");
             _heading.Add("Недвижимость");
             _heading.Add("Транспорт");
@@ -109,17 +148,18 @@ namespace WpfApplication_Оголошення_
 
         private void FormClosing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            //if (Adverts.Count > 0&& Users.Count!=0)
-            //{
-            //    Type[] types = { typeof(Ads) };
-            //    Type[] types1 = { typeof(User) };
-            //    XmlSerializer xml1 = new XmlSerializer(typeof(List<User>), types1);
-            //    XmlSerializer xml = new XmlSerializer(typeof(List<Ads>), types);
-            //    using (TextWriter t = new StreamWriter("Adverts"))
-            //    {
-            //        xml.Serialize(t, Adverts);
+            //System.Windows.Forms.MessageBox.Show($"count: {Adverts.Count}");
 
-            //    }
+            if (Adverts.Count > 0 && Users.Count > 0)
+            {
+
+                Type[] types = { typeof(Ads) };
+                Type[] types1 = { typeof(User) };
+                XmlSerializer xml1 = new XmlSerializer(typeof(List<User>), types1);
+                XmlSerializer xml = new XmlSerializer(typeof(List<Ads>), types);
+                using (TextWriter t = new StreamWriter("Adverts"))
+                {
+                    xml.Serialize(t, Adverts);
 
             //    using (TextWriter t1 = new StreamWriter("Users"))
             //    {
@@ -130,10 +170,30 @@ namespace WpfApplication_Оголошення_
             //    this.Close();
         }
 
+                using (TextWriter t1 = new StreamWriter("Users"))
+                {
+
+
+                     xml1.Serialize(t1, Users);
+                }
+            }
+        }
+
+        private void FormClosed(object sender, EventArgs e)
+        {
+           
+            
+        }
+
+        private void Click_Exit(object sender, RoutedEventArgs e)
+        {
+
+
         private void Click_Exit(object sender, RoutedEventArgs e)
         {
             tmp1 = null;
             Us.DataContext = tmp1;
         }
+
     }
 }

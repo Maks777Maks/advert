@@ -20,7 +20,7 @@ namespace WpfApplication_Оголошення_
     public partial class Autorization : Window
     {
         bool flag = false;
-        List<User> _users = new List<User>();
+        public List<User> _users = new List<User>();
 
         public User tmp = new User();
         public Autorization(User a, List<string> list)
