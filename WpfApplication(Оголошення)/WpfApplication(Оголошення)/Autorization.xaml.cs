@@ -23,15 +23,28 @@ namespace WpfApplication_Оголошення_
         public bool new_user = false;
         public List<User> _users = new List<User>();
 
+
+
         public User tmp = new User();
-        public Autorization()
+        public Autorization( List<User> users)
         {
             InitializeComponent();
+
+
+            _users = users;
+
             City city = new City();
 
             Combo1.ItemsSource = city.Cityes;
             
             this.DataContext = tmp;
+
+
+
+
+
+
+
         }
 
         private void Enter_Click(object sender, RoutedEventArgs e)

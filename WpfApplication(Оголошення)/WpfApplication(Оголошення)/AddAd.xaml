@@ -27,12 +27,12 @@
 
         
         <Image  Grid.Column="0" Grid.Row="0" Name="Logotip"  Source="OLX_Logotip.jpg" MouseDown="Logotip_MouseDown" />
-   
-        <Label Grid.Column="1" Grid.Row="0" Content="Заголовок" FontSize="25"></Label>
-        <TextBox Grid.Column="2" Grid.Row="0" Grid.ColumnSpan="3"  />
-        <Label Grid.Column="1" Grid.Row="1" Content="Рубрика" FontSize="25"></Label>
+
+        <Label Grid.Column="1" Grid.Row="0" Content="Title" FontSize="25"></Label>
+        <TextBox Grid.Column="2" Grid.Row="0" Grid.ColumnSpan="3"  MaxLength="30" />
+        <Label Grid.Column="1" Grid.Row="1" Content="Heading" FontSize="25"></Label>
         <ComboBox Grid.Column="2" Grid.Row="1" Grid.ColumnSpan="2" Name="ComboBox1"/>
-        <Label Grid.Column="1" Grid.Row="2" Content="Опис" FontSize="25"></Label>
+        <Label Grid.Column="1" Grid.Row="2" Content="Description" FontSize="25"></Label>
         <TextBox Name="Text" Grid.Column="2" Grid.Row="2" Grid.ColumnSpan="3" Grid.RowSpan="2" MinLines="2" Height="100" FontSize="20" TextChanged="TextBox_TextChanged" TextWrapping="Wrap"  />
        
         <Button Grid.Column="0" Grid.Row="5"  Content="Готово" Click="AddAdvert"/>
@@ -55,7 +55,7 @@
             <Button Name="Image2" Grid.Column="1" Grid.Row="0" Grid.RowSpan="2" Content="+" FontSize="50" Click="AddImage"/>
             <Button Name="Image3" Grid.Column="2" Grid.Row="0" Grid.RowSpan="2" Content="+" FontSize="50" Click="AddImage"/>
         </Grid>
-        <Expander Grid.Row="3" Header="Ваші контактні дані" FontSize="25" Grid.ColumnSpan="2" Name="Exp1">
+        <Expander Grid.Row="3" Header="Your contact details" FontSize="25" Grid.ColumnSpan="2" Name="Exp1">
             <StackPanel Name="StackPanel1">
                 <TextBlock  Name="City"/>
                 <TextBlock  Name="Tel"/>

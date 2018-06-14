@@ -6,23 +6,53 @@ using System.Threading.Tasks;
 
 namespace WpfApplication_Оголошення_
 {
+    [Serializable]
     public class Ads
     {
         string _catygory;
         string _text;
         List<string> images = new List<string>();
         DateTime _date;
-        User _user;
+        public User _user;
+
+        public string _Catygory
+        {
+            get { return _catygory; }
+            set { _catygory = value; }
+
+        }
+
+
+        public string _Text
+        {
+            get { return _text; }
+            set { _text = value; }
+
+        }
+        public DateTime _Date
+        {
+            get { return _date.Date; }
+            set { _date = value; }
+        }
+
+        
+            
 
         public Ads()
         {
-            _catygory = "noname";
-            _text = "noname";
+            _catygory = "";
+            _text = "";
             images = null;
             _date = DateTime.Now;
             _user = new User();
         }
 
+        public List<string> Images
+        {
+            get { return images; }
+        }
+
+        
 
 
 
@@ -34,5 +64,7 @@ namespace WpfApplication_Оголошення_
             _date = dt;
             _user = user;
         }
+
+
     }
 }

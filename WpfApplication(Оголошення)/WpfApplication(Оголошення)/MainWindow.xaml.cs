@@ -25,48 +25,23 @@ namespace WpfApplication_Оголошення_
     {
         
         public List<Ads> Adverts = new List<Ads>();
+        
         public List<User> Users = new List<User>();
 
 
         public User tmp1 = null;
 
-        Ads ad = new Ads();
+        Ads ad= new Ads();
 
         public MainWindow()
         {
             InitializeComponent();
+
            
-            try
-            {
-                using (TextReader t = new StreamReader("Adverts"))
-                {
-                    Type[] types = new Type[] { typeof(Ads) };
 
-                    XmlSerializer xml = new XmlSerializer(typeof(List<Ads>), types);
-                    Adverts  = (List<Ads>)xml.Deserialize(t);
-                    
-                }
+            ReadFromXML();
 
 
-                using (TextReader t1 = new StreamReader("Users"))
-                {
-                    Type[] types = new Type[] { typeof(User) };
-
-                    XmlSerializer xml = new XmlSerializer(typeof(List<User>), types);
-                    Users = (List<User>)xml.Deserialize(t1);
-
-                }
-            }
-            catch (FieldAccessException f)
-            {
-                Console.WriteLine(f.Message);
-            }
-
-            catch (FileNotFoundException f)
-            {
-                Console.WriteLine(f.Message);
-            }           
-           
             Heading heading = new Heading();
             combo_heading.ItemsSource = heading.Headings;
 
@@ -76,20 +51,65 @@ namespace WpfApplication_Оголошення_
             Us.DataContext = tmp1;
         }
 
+
+        private void ReadFromXML()
+        {
+            try
+            {
+                if (File.Exists("Users1.xml") == true)
+                {
+                    //[] types = new Type[] { typeof(User) };
+                    XmlSerializer xml = new XmlSerializer(typeof(List<User>));
+                    using (FileStream t1 = new FileStream("Users1.xml", FileMode.Open))
+                    {
+
+
+                        Users = (List<User>)xml.Deserialize(t1);
+
+                    }
+                }
+                else
+                    MessageBox.Show("!!!");
+
+
+                if (File.Exists("Adverts1.xml") == true)
+                {
+                    using (FileStream t = new FileStream("Adverts1.xml",FileMode.Open))
+                    {
+                        Type[] types = new Type[] { typeof(Ads) };
+
+                        XmlSerializer xml = new XmlSerializer(typeof(List<Ads>), types);
+                        Adverts = (List<Ads>)xml.Deserialize(t);
+
+                    }
+                }
+                else
+                    MessageBox.Show("!!!");
+
+
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
+        }
+
         private void Click_Autorization(object sender, RoutedEventArgs e)
         {
             
-            Autorization _autorization = new Autorization();
+            Autorization _autorization = new Autorization(Users);
             if (tmp1 == null)
             {
                 if (_autorization.ShowDialog() == true)
                 {
                     if(_autorization.new_user==true)
                     {
+                        tmp1 = _autorization.tmp;
+                        Us.DataContext = tmp1;
                         Users.Add(tmp1);
                         Type[] types1 = { typeof(User) };
-                        XmlSerializer xml1 = new XmlSerializer(typeof(List<User>), types1);
-                        using (TextWriter t1 = new StreamWriter("Users"))
+                        XmlSerializer xml1 = new XmlSerializer(typeof(List<User>));
+                        using (FileStream t1 = new FileStream("Users1.xml",FileMode.Create))
                         {
                             xml1.Serialize(t1, Users);
                         }
@@ -112,7 +132,7 @@ namespace WpfApplication_Оголошення_
              Adverts.Add(ad);
             Type[] types = { typeof(Ads) };
             XmlSerializer xml = new XmlSerializer(typeof(List<Ads>), types);
-            using (TextWriter t = new StreamWriter("Adverts"))
+            using (FileStream t = new FileStream("Adverts1.xml", FileMode.Create))
             {
                 xml.Serialize(t, Adverts);
 

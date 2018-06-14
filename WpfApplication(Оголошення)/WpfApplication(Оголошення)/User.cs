@@ -9,9 +9,10 @@ using System.Text.RegularExpressions;
 
 namespace WpfApplication_Оголошення_
 {
+    [Serializable]
     public class User: IDataErrorInfo , INotifyPropertyChanged
     {
-        private bool isValid = false;
+       private bool isValid = false;
         string _login;
         string _password;
         string _city;
@@ -28,6 +29,7 @@ namespace WpfApplication_Оголошення_
             set
             {
                 isValid = value;
+                if(PropertyChanged!=null)
                 PropertyChanged(this, new PropertyChangedEventArgs("IsValid"));
             }
             get { return isValid; }
