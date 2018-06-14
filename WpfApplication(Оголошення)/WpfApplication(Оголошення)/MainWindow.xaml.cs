@@ -23,20 +23,19 @@ namespace WpfApplication_Оголошення_
     /// </summary>
     public partial class MainWindow : Window
     {
-        List<string> _heading = new List<string>();
-        List<string> _city = new List<string>();
+        
         public List<Ads> Adverts = new List<Ads>();
         public List<User> Users = new List<User>();
 
-        public User tmp1 = new User();
-        bool flag = false;
+
+        public User tmp1 = null;
+
         Ads ad = new Ads();
 
         public MainWindow()
         {
             InitializeComponent();
-
-
+           
             try
             {
                 using (TextReader t = new StreamReader("Adverts"))
@@ -66,70 +65,37 @@ namespace WpfApplication_Оголошення_
             catch (FileNotFoundException f)
             {
                 Console.WriteLine(f.Message);
-            }
+            }           
+           
+            Heading heading = new Heading();
+            combo_heading.ItemsSource = heading.Headings;
 
-
-
-
-
-
-            _heading.Add("Все рубрики");
-            _heading.Add("Недвижимость");
-            _heading.Add("Транспорт");
-            _heading.Add("Работа");
-            _heading.Add("Животные");
-            _heading.Add("fable");
-            _heading.Add("Электроника");
-            _heading.Add("Отдых и спорт");
-
-            foreach (string i in _heading)
-            {
-                combo_heading.Items.Add(i);
-            }
-
-            _city.Add("Винница");
-            _city.Add("Луцьк");
-            _city.Add("Днепр");
-            _city.Add("Донецк");
-            _city.Add("Житомир");
-            _city.Add("Ужгород");
-            _city.Add("Запорожье");
-            _city.Add("Ивано-Франковск");
-            _city.Add("Киев");
-            _city.Add("Кировоград");
-            _city.Add("Луганск");
-            _city.Add("Львов");
-            _city.Add("Николаев");
-            _city.Add("Одесса");
-            _city.Add("Полтава");
-            _city.Add("Ровно");
-            _city.Add("Сумы");
-            _city.Add("Тернополь");
-            _city.Add("Харьков");
-            _city.Add("Херсон");
-            _city.Add("Хмельницк");
-            _city.Add("Черкассы");
-            _city.Add("Чернигов");
-            _city.Add("Черновцы");
-
-            foreach (string i in _city)
-            {
-                combo_city.Items.Add(i);
-            }
+            City city = new City();
+            combo_city.ItemsSource = city.Cityes;
+            
             Us.DataContext = tmp1;
         }
 
         private void Click_Autorization(object sender, RoutedEventArgs e)
         {
-            Autorization _autorization = new Autorization(tmp1, _city);
+            
+            Autorization _autorization = new Autorization();
             if (tmp1 == null)
             {
                 if (_autorization.ShowDialog() == true)
                 {
-                    flag = true;
+                    if(_autorization.new_user==true)
+                    {
+                        Users.Add(tmp1);
+                        Type[] types1 = { typeof(User) };
+                        XmlSerializer xml1 = new XmlSerializer(typeof(List<User>), types1);
+                        using (TextWriter t1 = new StreamWriter("Users"))
+                        {
+                            xml1.Serialize(t1, Users);
+                        }
+                    }
                     tmp1 = _autorization.tmp;
                     Us.DataContext = tmp1;
-                    // Us.Header = tmp1.Name;
                 }
             }
         }
@@ -141,42 +107,21 @@ namespace WpfApplication_Оголошення_
 
         private void ButtonAddadvert_Click(object sender, RoutedEventArgs e)
         {
-             AddAd Add__Ad = new AddAd(_heading,ad,tmp1);
+             AddAd Add__Ad = new AddAd(ad,tmp1);
              Add__Ad.ShowDialog();
              Adverts.Add(ad);
+            Type[] types = { typeof(Ads) };
+            XmlSerializer xml = new XmlSerializer(typeof(List<Ads>), types);
+            using (TextWriter t = new StreamWriter("Adverts"))
+            {
+                xml.Serialize(t, Adverts);
+
+            }
         }
 
         private void FormClosing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            //System.Windows.Forms.MessageBox.Show($"count: {Adverts.Count}");
-
-            if (Adverts.Count > 0 && Users.Count > 0)
-            {
-
-                Type[] types = { typeof(Ads) };
-                Type[] types1 = { typeof(User) };
-                XmlSerializer xml1 = new XmlSerializer(typeof(List<User>), types1);
-                XmlSerializer xml = new XmlSerializer(typeof(List<Ads>), types);
-                using (TextWriter t = new StreamWriter("Adverts"))
-                {
-                    xml.Serialize(t, Adverts);
-
-            //    using (TextWriter t1 = new StreamWriter("Users"))
-            //    {
-            //        xml1.Serialize(t1, Users);
-            //    }
-            //}
-            //else
-            //    this.Close();
-        }
-
-                using (TextWriter t1 = new StreamWriter("Users"))
-                {
-
-
-                     xml1.Serialize(t1, Users);
-                }
-            }
+            
         }
 
         private void FormClosed(object sender, EventArgs e)
@@ -184,10 +129,6 @@ namespace WpfApplication_Оголошення_
            
             
         }
-
-        private void Click_Exit(object sender, RoutedEventArgs e)
-        {
-
 
         private void Click_Exit(object sender, RoutedEventArgs e)
         {

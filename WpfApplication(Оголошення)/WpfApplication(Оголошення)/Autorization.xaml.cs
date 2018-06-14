@@ -20,23 +20,18 @@ namespace WpfApplication_Оголошення_
     public partial class Autorization : Window
     {
         bool flag = false;
+        public bool new_user = false;
         public List<User> _users = new List<User>();
 
         public User tmp = new User();
-        public Autorization(User a, List<string> list)
+        public Autorization()
         {
             InitializeComponent();
-            tmp.Login = "Maks";
-            tmp.Password = "1111";
-            tmp.Name = "Maks";
-            _users.Add(tmp);
-            foreach (string i in list)
-            {
-                Combo1.Items.Add(i);
-            }
+            City city = new City();
+
+            Combo1.ItemsSource = city.Cityes;
+            
             this.DataContext = tmp;
-            //Label.FontFamilyProperty.OverrideMetadata(typeof(Label),
-            //new FrameworkPropertyMetadata(new FontFamily("Viner Hand ITC")));
         }
 
         private void Enter_Click(object sender, RoutedEventArgs e)
@@ -71,6 +66,38 @@ namespace WpfApplication_Оголошення_
                 flag = false;
             }
 
+        }
+
+        private void Click_Ok(object sender, RoutedEventArgs e)
+        {
+            if(Log1.Text=="" || Pass1.Text=="" || Pass2.Text=="" || Combo1.SelectedIndex==-1 || Pass4.Text=="")
+            {
+                MessageBox.Show("Не все поля заполненны!!!");
+                return;
+            }
+            if (Pass2.Text != Pass1.Text)
+            {
+                MessageBox.Show("Пароль не верный!!!");
+                return;
+            }
+                //tmp.Login = Log1.Text;
+                tmp.Password = Pass2.Text;
+                //tmp.City = Combo1.SelectedItem.ToString();
+                //tmp.Tel = Pass4.Text.ToString();
+                this.DialogResult = true;
+                new_user = true;
+                this.Close();        
+        }
+
+        private void Log1_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            //bool fff = Convert.ToBoolean(sender);
+            if (Log1.Text != "")
+            {
+                Tip.Visibility = Visibility;
+            }
+            //else
+                //Tip.Visibility = Collapsed;
         }
     }
 }

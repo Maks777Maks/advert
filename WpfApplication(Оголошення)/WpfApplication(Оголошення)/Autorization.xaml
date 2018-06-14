@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApplication_Оголошення_"
         mc:Ignorable="d"
-        Title="Autorization" Height="500" Width="400"
+        Title="Autorization" Height="600" Width="450"
         Background="#333" ResizeMode="CanResizeWithGrip">
     <Grid>
         <Grid.RowDefinitions>
@@ -19,38 +19,46 @@
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="100"/>
+            <ColumnDefinition Width="120"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <StackPanel Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center">
-            <Label>Логин</Label>
-            <Label>Пароль</Label>
+            <Label>Login</Label>
+            <Label>Password</Label>
         </StackPanel>
         <StackPanel Grid.RowSpan="2" Grid.Column="1">
             <TextBox Text="{Binding Path=Login}" Name="Log" Margin="2,2,2,2"/>
             <PasswordBox Name="Pass" Margin="2,2,2,2"/>
         </StackPanel>
-        <Button Content="Войти" Grid.Column="0" Grid.Row="2" Click="Enter_Click" Height="100" />
+        <Button Content="Enter" Grid.Column="0" Grid.Row="2" Click="Enter_Click" Height="100" />
         <StackPanel Grid.Column="1" Grid.Row="2">
-            <Label>Регистрация</Label>
+            <Label>Registration</Label>
             <ToggleButton Style="{StaticResource ToggleButton_Occupado}" Width="76" Margin="16" Grid.Column="1" Grid.Row="2" Click="Button_Click"/>
         </StackPanel>
         
 
-        <StackPanel Name="stack1" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="4" Grid.RowSpan="3" Grid.Column="0" Visibility="Collapsed" Height="200">
-            <Label HorizontalAlignment="Center" Content="Логин" Height="40" />
-            <Label HorizontalAlignment="Center" Content="Пароль" Height="40" />
-            <Label HorizontalAlignment="Center" Content="Подтвердить" Height="40" />
-            <Label HorizontalAlignment="Center" Content="Город" Height="35" />
-            <Label HorizontalAlignment="Center" Content="Телефон" Height="25" />
+        <StackPanel Name="stack1" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="4" Grid.RowSpan="3" Grid.Column="0" Visibility="Collapsed" Height="300">
+            <Label HorizontalAlignment="Center" Content="Login" Height="40" />
+            <Label HorizontalAlignment="Center" Content="Password" Height="40" />
+            <Label HorizontalAlignment="Center" Content="Confirm" Height="40" />
+            <Label HorizontalAlignment="Center" Content="City" Height="35" />
+            <Label HorizontalAlignment="Center" Content="Telephone" Height="40" />
+            <Label HorizontalAlignment="Center" Content="Name" Height="35" />
+            <Label HorizontalAlignment="Center" Content="E-mail" Height="25" />
         </StackPanel>
-        <StackPanel Name="stack2" Grid.Row="4" Grid.RowSpan="3" Grid.Column="1" Visibility="Collapsed" Height="200">
-            <TextBox Name="Log1" Margin="2,2,2,2"/>
+        <StackPanel Name="stack2" Grid.Row="4" Grid.RowSpan="3" Grid.Column="1" Visibility="Collapsed" Height="300">
+            <TextBox Text="{Binding Path=Login, ValidatesOnDataErrors=True,UpdateSourceTrigger=PropertyChanged}" Name="Log1" Margin="2,2,2,2" TextChanged="Log1_TextChanged">
+                <TextBox.ToolTip>
+                    <ToolTip Name="Tip" Visibility="Collapsed" Content="Eror"/>
+                </TextBox.ToolTip>
+            </TextBox>
             <TextBox Name="Pass1" Margin="2,2,2,2"/>
-            <TextBox Name="Pass2" Margin="2,2,2,2"/>
-            <ComboBox Name="Combo1" Margin="2,2,2,2"/>
-            <TextBox Name="Pass4" Margin="2,2,2,2"/>
-            <Button Grid.Row="7" Grid.Column="1" Width="150" Content="OK"/>
+            <TextBox Text="{Binding Path=Password, ValidatesOnDataErrors=True,UpdateSourceTrigger=PropertyChanged}" Name="Pass2" Margin="2,2,2,2"/>
+            <ComboBox SelectedItem="{Binding Path=City, ValidatesOnDataErrors=True,UpdateSourceTrigger=PropertyChanged}" Name="Combo1" Margin="2,2,2,2"/>
+            <TextBox Text="{Binding Path=Tel, ValidatesOnDataErrors=True,UpdateSourceTrigger=PropertyChanged}" Name="Pass4" Margin="2,2,2,2"/>
+            <TextBox Text="{Binding Path=Name, ValidatesOnDataErrors=True,UpdateSourceTrigger=PropertyChanged}" Margin="2,2,2,2"/>
+            <TextBox Text="{Binding Path=Mail, ValidatesOnDataErrors=True,UpdateSourceTrigger=PropertyChanged}" Margin="2,2,2,2"/>
+            <Button IsEnabled="{Binding Path=IsValid}" Grid.Row="7" Grid.Column="1" Height="40" Width="200" Content="OK" Click="Click_Ok"/>
         </StackPanel>
     </Grid>
 </Window>

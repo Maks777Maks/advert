@@ -21,10 +21,13 @@ namespace WpfApplication_Оголошення_
     {
         User user;
         Ads Ad;
-        public AddAd(List<string> heading, Ads ad, User user)
+        public AddAd(Ads ad, User user)
         {
             InitializeComponent();
-            ComboBox1.ItemsSource = heading;
+
+            Heading heading = new Heading();
+            ComboBox1.ItemsSource = heading.Headings;
+            
             Ad = ad;
             try
             {

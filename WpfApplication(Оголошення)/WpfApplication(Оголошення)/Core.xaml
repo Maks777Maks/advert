@@ -15,8 +15,8 @@
     </Style>-->
 
     <Style TargetType="{x:Type Label}">
-        <Setter Property="FontSize" Value="12"/>
-        <Setter Property="FontFamily" Value="Viner Hand ITC"/>
+        <Setter Property="FontSize" Value="18"/>
+        <Setter Property="FontFamily" Value="Monotype Corsiva"/>
         <Setter Property="Foreground" Value="{StaticResource ControlBackgroundOver}"/>
         <Setter Property="HorizontalAlignment" Value="Center"/>
     </Style>
@@ -1488,6 +1488,7 @@
     <Geometry x:Key="RightArrow">M 0,0 L 4,3.5 L 0,7 Z</Geometry>
 
     <Style TargetType="{x:Type Menu}">
+        <Setter Property="FontSize" Value="22"/>
         <Setter Property="Background" Value="{StaticResource ControlBackgroundNormal}"/>
         <Setter Property="BorderBrush" Value="{StaticResource ControlBorderBrush}"/>
         <Setter Property="BorderThickness" Value="0,0,0,1"/>
@@ -1514,6 +1515,7 @@
         <Setter Property="HorizontalContentAlignment" Value="{Binding Path=HorizontalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"/>
         <Setter Property="VerticalContentAlignment" Value="{Binding Path=VerticalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"/>
         <Setter Property="Template" Value="{DynamicResource {ComponentResourceKey ResourceId=SubmenuItemTemplateKey, TypeInTargetAssembly={x:Type MenuItem}}}"/>
+        <Setter Property="FontFamily" Value="Monotype Corsiva"/>
         <Style.Triggers>
             <Trigger Property="Role" Value="TopLevelHeader">
                 <Setter Property="Padding" Value="7,2,8,3"/>

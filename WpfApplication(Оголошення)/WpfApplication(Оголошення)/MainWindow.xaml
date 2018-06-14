@@ -18,27 +18,28 @@
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="205"/>
-            <ColumnDefinition Width="159"/>
-            <ColumnDefinition Width="239"/>
+            <ColumnDefinition Width="220"/>
+            <ColumnDefinition Width="230"/>
             <ColumnDefinition Width="238"/>
             <ColumnDefinition Width="239"/>
-            
+
         </Grid.ColumnDefinitions>
-        <StackPanel Grid.Column="3"  Grid.ColumnSpan="3">
-            <Menu Margin="10">
-                <MenuItem Width="150" Header="  + Подать объявление  " Click="ButtonAddadvert_Click"/>
-                <MenuItem Width="100" Header="  Войти  " Click="Click_Autorization" />
-                <MenuItem Width="100" Name="Us" Header="{Binding Path=Name}"/>
-                <MenuItem Width="100" Header="  Выйти  " Click="Click_Exit"/>
+        <StackPanel Grid.Column="2"  Grid.ColumnSpan="3">
+            <Menu Margin="10" Height="30">
+                <MenuItem Width="200" Header="  + Submit your ad  " Click="ButtonAddadvert_Click"/>
+                <MenuItem Width="146" Header="  Enter  " Click="Click_Autorization" />
+                <MenuItem Width="160" Name="Us" Header="{Binding Path=Name}"/>
+                <MenuItem Width="174" Header="  Exit  " Click="Click_Exit"/>
             </Menu>
         </StackPanel>
         <Grid Grid.Column="1" Grid.Row="1">
-            <TextBox FontStyle="Italic" Padding="5,5,32,5" Width="200" Text="Найти..."/>
+            <TextBox FontStyle="Italic" Padding="5,5,32,5" Width="200" Margin="10,33,11,43" Height="Auto"/>
             <Grid Grid.Column="1" Grid.Row="1" Height="28" Width="28" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,20,0">
-                <Path Width="20.7781" Height="20.7781" Stretch="Fill" Fill="{StaticResource FillPath}" Data="{StaticResource magnifyStyle0}" />
+                <Path Width="20.7781" Height="20.7781" Stretch="Fill" Fill="{StaticResource FillPath}" Data="{StaticResource magnifyStyle0}" RenderTransformOrigin="0.433,0.337" />
             </Grid>
         </Grid>
-        <ComboBox Name="combo_city" Margin="0,0,20,0" Grid.Column="2" Grid.Row="1"/>
-        <ComboBox Grid.Column="3" Grid.Row="1" Name="combo_heading"/>
+        <ComboBox SelectedIndex="0" Name="combo_city" Margin="10,32,10,43" Grid.Column="2" Grid.Row="1" Height="Auto"/>
+        <ComboBox SelectedIndex="0" Grid.Column="3" Grid.Row="1" Name="combo_heading" Margin="0,32,0,43" Height="Auto"/>
+        <Button Name="Search" Grid.Column="4" Grid.Row="1" Height="Auto" Content="Search" Margin="61,32,40,43"/>
     </Grid>
 </Window>

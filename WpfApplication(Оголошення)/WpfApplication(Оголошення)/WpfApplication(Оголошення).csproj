@@ -60,6 +60,8 @@
       <DependentUpon>AddAd.xaml</DependentUpon>
     </Compile>
     <Compile Include="Ads.cs" />
+    <Compile Include="City.cs" />
+    <Compile Include="Heading.cs" />
     <Compile Include="User.cs" />
     <Page Include="AddAd.xaml">
       <SubType>Designer</SubType>
