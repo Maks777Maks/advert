@@ -13,6 +13,7 @@ namespace WpfApplication_Оголошення_
         {
             _cityes = new List<string>
             {
+                "All City",
                 "Kiev",
                 "Cherkasy",
                 "Chernigov",

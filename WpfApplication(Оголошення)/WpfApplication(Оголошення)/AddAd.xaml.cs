@@ -20,35 +20,16 @@ namespace WpfApplication_Оголошення_
     public partial class AddAd : Window
     {
         User user;
-        Ads Ad;
-        public AddAd(Ads ad, User user)
+        public Ads Ad = new Ads();
+        List<string> images = new List<string>();
+        public AddAd(User user)
         {
             InitializeComponent();
 
             Heading heading = new Heading();
             ComboBox1.ItemsSource = heading.Headings;
-            
-            Ad = ad;
-            try
-            {
-                //System.Windows.Forms.MessageBox.Show($"Name: {user.Name}");
-                this.user = user;
-                Tel.Text = this.user.Tel.ToString();
-                City.Text = this.user.City;
-                Login.Text = this.user.Password;
-            }
-            catch
-            {
 
-            }
-
-
-
-
-
-
-
-
+            this.user = user;
         }
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
@@ -64,33 +45,36 @@ namespace WpfApplication_Оголошення_
         private void AddImage(object sender, RoutedEventArgs e)
         {
             Microsoft.Win32.OpenFileDialog ofd = new Microsoft.Win32.OpenFileDialog();
+           
             if (true == ofd.ShowDialog())
-
             {
+                images.Add(ofd.FileName);
                 BitmapImage bi = new BitmapImage(new Uri(ofd.FileName));
                 Image i = new Image();
                 i.Source = bi;
                 (sender as Button).Content = i;
-
-
             }
         }
+       
 
         private void AddAdvert(object sender, RoutedEventArgs e)
         {
-            List<string> images = new List<string>();
-
-            foreach(Button i in Grid1.Children)
-            {
-                if(i!=null)
-                {
-                    images.Add(i.Name);
-                }
-            }
-            if(images.Count!=0)
-            Ad = new Ads(ComboBox1.SelectedItem.ToString(), Text.Text, images, new DateTime(), user);
-            this.Close();
             
+
+            //foreach (Button i in Grid1.Children)
+            //{
+            //    if ((i.Content as Image) != null)
+            //    {
+            //        images.Add((i.Content as Image).Source.ToString());
+            //    }
+            //}
+            //if (images.Count != 0)
+            foreach(var i in images)
+            {
+                MessageBox.Show(i);
+            }
+                Ad = new Ads(Title.Text, ComboBox1.SelectedItem.ToString(), int.Parse(_price.Text), Text.Text, images, new DateTime(), user);
+            this.Close();
         }
     }
 }

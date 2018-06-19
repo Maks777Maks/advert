@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,12 +22,14 @@ namespace WpfApplication_Оголошення_
     {
         bool flag = false;
         public bool new_user = false;
-        public List<User> _users = new List<User>();
+        public ObservableCollection<User> _users = new ObservableCollection<User>();
 
         public User tmp = new User();
-        public Autorization()
+        public Autorization(ObservableCollection<User> users)
         {
             InitializeComponent();
+
+            _users = users;
             City city = new City();
 
             Combo1.ItemsSource = city.Cityes;

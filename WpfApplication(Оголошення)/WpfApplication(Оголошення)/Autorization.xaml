@@ -58,7 +58,23 @@
             <TextBox Text="{Binding Path=Tel, ValidatesOnDataErrors=True,UpdateSourceTrigger=PropertyChanged}" Name="Pass4" Margin="2,2,2,2"/>
             <TextBox Text="{Binding Path=Name, ValidatesOnDataErrors=True,UpdateSourceTrigger=PropertyChanged}" Margin="2,2,2,2"/>
             <TextBox Text="{Binding Path=Mail, ValidatesOnDataErrors=True,UpdateSourceTrigger=PropertyChanged}" Margin="2,2,2,2"/>
-            <Button IsEnabled="{Binding Path=IsValid}" Grid.Row="7" Grid.Column="1" Height="40" Width="200" Content="OK" Click="Click_Ok"/>
+            <Button IsEnabled="{Binding Path=IsValid}" Grid.Row="7" Grid.Column="1" Height="40" Width="200" Content="OK" Click="Click_Ok">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="IsEnabled" Value="True"></Setter>
+                        <Style.Triggers>
+                            <MultiDataTrigger>
+                                <MultiDataTrigger.Conditions>
+                                    <Condition Binding="{Binding ElementName=Log1,Path=(Validation.HasError)}" Value="true"></Condition>
+                                </MultiDataTrigger.Conditions>
+                                <MultiDataTrigger.Setters>
+                                    <Setter Property="IsEnabled" Value="False"></Setter>
+                                </MultiDataTrigger.Setters>
+                            </MultiDataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
         </StackPanel>
     </Grid>
 </Window>

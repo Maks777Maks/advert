@@ -13,6 +13,7 @@ namespace WpfApplication_Оголошення_
         {
             heading = new List<string>
             {
+                "All heading",
                 "Property",
                 "Transport",
                 "Job",

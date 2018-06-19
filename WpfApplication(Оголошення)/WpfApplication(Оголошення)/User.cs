@@ -27,8 +27,11 @@ namespace WpfApplication_Оголошення_
         {
             set
             {
-                isValid = value;
-                PropertyChanged(this, new PropertyChangedEventArgs("IsValid"));
+                if (PropertyChanged != null)
+                {
+                    isValid = value;
+                    PropertyChanged(this, new PropertyChangedEventArgs("IsValid"));
+                }
             }
             get { return isValid; }
         }

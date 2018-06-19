@@ -5,41 +5,52 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApplication_Оголошення_"
         mc:Ignorable="d"
-        Title="MainWindow" Height="650" Width="1200"
-        Background="#333" ResizeMode="CanResizeWithGrip" Closing="FormClosing" Closed="FormClosed">
-    <Grid>
+        Title="OLX" Height="650" Width="1400"
+        Background="#333" ResizeMode="CanResizeWithGrip" Closing="FormClosing" Closed="FormClosed" ScrollViewer.CanContentScroll="True">
+    <Grid Margin="0,44,32,0">
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
-            <RowDefinition />
-            <RowDefinition />
-            <RowDefinition />
-            <RowDefinition />
-            <RowDefinition />
+            <RowDefinition Height="119*" />
+            <RowDefinition Height="109*" />
+            <RowDefinition Height="114*" />
+            <RowDefinition Height="114*" />
+            <RowDefinition Height="113*" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="205"/>
+            <ColumnDefinition Width="255"/>
             <ColumnDefinition Width="220"/>
             <ColumnDefinition Width="230"/>
             <ColumnDefinition Width="238"/>
-            <ColumnDefinition Width="239"/>
-
+            <ColumnDefinition Width="181"/>
+            <ColumnDefinition Width="230"/>
+            <ColumnDefinition Width="83"/>
         </Grid.ColumnDefinitions>
         <StackPanel Grid.Column="2"  Grid.ColumnSpan="3">
             <Menu Margin="10" Height="30">
-                <MenuItem Width="200" Header="  + Submit your ad  " Click="ButtonAddadvert_Click"/>
-                <MenuItem Width="146" Header="  Enter  " Click="Click_Autorization" />
+                <MenuItem Width="176" Header="  + Submit your ad  " Click="ButtonAddadvert_Click"/>
+                <MenuItem Width="128" Header="  Enter" Click="Click_Autorization" />
                 <MenuItem Width="160" Name="Us" Header="{Binding Path=Name}"/>
-                <MenuItem Width="174" Header="  Exit  " Click="Click_Exit"/>
+                <MenuItem Width="160" Header="Exit" Click="Click_Exit"/>
             </Menu>
         </StackPanel>
         <Grid Grid.Column="1" Grid.Row="1">
-            <TextBox FontStyle="Italic" Padding="5,5,32,5" Width="200" Margin="10,33,11,43" Height="Auto"/>
+            <TextBox Name="Text" FontStyle="Italic" Padding="5,5,32,5" Width="200" Margin="10,33,11,43" Height="Auto"/>
             <Grid Grid.Column="1" Grid.Row="1" Height="28" Width="28" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,20,0">
                 <Path Width="20.7781" Height="20.7781" Stretch="Fill" Fill="{StaticResource FillPath}" Data="{StaticResource magnifyStyle0}" RenderTransformOrigin="0.433,0.337" />
             </Grid>
         </Grid>
+        <ComboBox SelectedIndex="0" Name="Select" Grid.Column="0" Grid.Row="1" Margin="10,32,10,43" Height="Auto"/>
         <ComboBox SelectedIndex="0" Name="combo_city" Margin="10,32,10,43" Grid.Column="2" Grid.Row="1" Height="Auto"/>
-        <ComboBox SelectedIndex="0" Grid.Column="3" Grid.Row="1" Name="combo_heading" Margin="0,32,0,43" Height="Auto"/>
-        <Button Name="Search" Grid.Column="4" Grid.Row="1" Height="Auto" Content="Search" Margin="61,32,40,43"/>
+        <ComboBox SelectedIndex="0" Name="combo_heading" Margin="10,32,10,43" Grid.Column="3" Grid.Row="1" Height="Auto"/>
+        <Button Name="Search" Grid.Column="4" Grid.Row="1" Height="Auto" Content="Search" Margin="49,32,52,43" Click="Click_Search" RenderTransformOrigin="0.791,0.333"/>
+        <ListView  ScrollViewer.HorizontalScrollBarVisibility="Disabled" Name="view" HorizontalContentAlignment="Center" Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="4" Grid.RowSpan="4"  ItemTemplate="{DynamicResource ListDataTemplate}">
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel HorizontalAlignment="Center" Width="800" ></WrapPanel>
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
+        </ListView>
+        <Image Grid.Row="2" Grid.RowSpan="4" />
+        <Image Grid.Row="2" Grid.RowSpan="4" Grid.Column="5" Margin="0,0,77,0" Grid.ColumnSpan="2"/>
     </Grid>
 </Window>

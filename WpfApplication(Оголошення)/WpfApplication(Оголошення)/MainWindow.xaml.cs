@@ -15,6 +15,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Xml.Serialization;
 using System.ComponentModel;
+using System.Collections.ObjectModel;
 
 namespace WpfApplication_Оголошення_
 {
@@ -24,8 +25,10 @@ namespace WpfApplication_Оголошення_
     public partial class MainWindow : Window
     {
         
-        public List<Ads> Adverts = new List<Ads>();
-        public List<User> Users = new List<User>();
+        public ObservableCollection<Ads> Adverts = new ObservableCollection<Ads>();
+        public ObservableCollection<User> Users = new ObservableCollection<User>();
+
+        ObservableCollection<Ads> tmp_ads = new ObservableCollection<Ads>();
 
 
         public User tmp1 = null;
@@ -35,61 +38,70 @@ namespace WpfApplication_Оголошення_
         public MainWindow()
         {
             InitializeComponent();
-           
-            try
-            {
-                using (TextReader t = new StreamReader("Adverts"))
-                {
-                    Type[] types = new Type[] { typeof(Ads) };
 
-                    XmlSerializer xml = new XmlSerializer(typeof(List<Ads>), types);
-                    Adverts  = (List<Ads>)xml.Deserialize(t);
-                    
-                }
-
-
-                using (TextReader t1 = new StreamReader("Users"))
-                {
-                    Type[] types = new Type[] { typeof(User) };
-
-                    XmlSerializer xml = new XmlSerializer(typeof(List<User>), types);
-                    Users = (List<User>)xml.Deserialize(t1);
-
-                }
-            }
-            catch (FieldAccessException f)
-            {
-                Console.WriteLine(f.Message);
-            }
-
-            catch (FileNotFoundException f)
-            {
-                Console.WriteLine(f.Message);
-            }           
-           
+            ReadFromXML();
             Heading heading = new Heading();
             combo_heading.ItemsSource = heading.Headings;
 
             City city = new City();
             combo_city.ItemsSource = city.Cityes;
-            
+
+            Select.Items.Add("Ascending price");
+            Select.Items.Add("Decending price");
+            Select.Items.Add("By date");
+            tmp_ads.Add(new Ads());
+
+            tmp_ads = Adverts;
+            view.ItemsSource = tmp_ads;
             Us.DataContext = tmp1;
+        }
+
+        private void ReadFromXML()
+        {
+            try
+            {
+                if (File.Exists("Users1.xml") == true)
+                {
+                    XmlSerializer xml = new XmlSerializer(typeof(ObservableCollection<User>));
+                    using (FileStream t1 = new FileStream("Users1.xml", FileMode.Open))
+                    {
+                        Users = (ObservableCollection<User>)xml.Deserialize(t1);
+                    }
+                }            
+
+                if (File.Exists("Adverts1.xml") == true)
+                {
+                    using (FileStream t = new FileStream("Adverts1.xml", FileMode.Open))
+                    {
+                        Type[] types = new Type[] { typeof(Ads) };
+
+                        XmlSerializer xml = new XmlSerializer(typeof(ObservableCollection<Ads>), types);
+                        Adverts = (ObservableCollection<Ads>)xml.Deserialize(t);
+                    }
+                }              
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
         }
 
         private void Click_Autorization(object sender, RoutedEventArgs e)
         {
-            
-            Autorization _autorization = new Autorization();
+
+            Autorization _autorization = new Autorization(Users);
             if (tmp1 == null)
             {
                 if (_autorization.ShowDialog() == true)
                 {
-                    if(_autorization.new_user==true)
+                    if (_autorization.new_user == true)
                     {
+                        tmp1 = _autorization.tmp;
+                        Us.DataContext = tmp1;
                         Users.Add(tmp1);
                         Type[] types1 = { typeof(User) };
-                        XmlSerializer xml1 = new XmlSerializer(typeof(List<User>), types1);
-                        using (TextWriter t1 = new StreamWriter("Users"))
+                        XmlSerializer xml1 = new XmlSerializer(typeof(ObservableCollection<User>));
+                        using (FileStream t1 = new FileStream("Users1.xml", FileMode.Create))
                         {
                             xml1.Serialize(t1, Users);
                         }
@@ -107,15 +119,30 @@ namespace WpfApplication_Оголошення_
 
         private void ButtonAddadvert_Click(object sender, RoutedEventArgs e)
         {
-             AddAd Add__Ad = new AddAd(ad,tmp1);
-             Add__Ad.ShowDialog();
-             Adverts.Add(ad);
-            Type[] types = { typeof(Ads) };
-            XmlSerializer xml = new XmlSerializer(typeof(List<Ads>), types);
-            using (TextWriter t = new StreamWriter("Adverts"))
+            if (tmp1 != null)
             {
-                xml.Serialize(t, Adverts);
-
+                AddAd Add__Ad = new AddAd(tmp1);
+                Add__Ad.ShowDialog();
+                MessageBox.Show(Add__Ad.Ad.Name.ToString());
+                Adverts.Add(Add__Ad.Ad);
+                Type[] types = { typeof(Ads) };
+                XmlSerializer xml = new XmlSerializer(typeof(ObservableCollection<Ads>), types);
+                using (FileStream t = new FileStream("Adverts1.xml", FileMode.Create))
+                {
+                    xml.Serialize(t, Adverts);
+                }
+                
+                tmp_ads = Adverts;
+                view.ItemsSource = tmp_ads;
+                
+                foreach(Ads i in view.Items)
+                {
+                    MessageBox.Show(i.Date.ToString());
+                }
+            }
+            else
+            {
+                MessageBox.Show("First you need to log in");
             }
         }
 
@@ -136,5 +163,20 @@ namespace WpfApplication_Оголошення_
             Us.DataContext = tmp1;
         }
 
+        private void Click_Search(object sender, RoutedEventArgs e)
+        {
+            //ReadFromXML();            
+            tmp_ads = Adverts;
+            
+
+            //foreach (Ads i in Adverts)
+            //{
+            //    if(Text.Text!="")
+            //    {
+            //       // tmp_ads.Remove()
+            //    }
+            //}
+
+        }
     }
 }
