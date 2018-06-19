@@ -65,7 +65,7 @@ namespace WpfApplication_Оголошення_
             get { return images; }
         }
 
-        public List<string> Images
+        public List<string> ImageS
         {
             get {
                 System.Windows.MessageBox.Show("Getter  " + images[0]);
@@ -82,6 +82,7 @@ namespace WpfApplication_Оголошення_
             _date = dt;
             _user = user;
             System.Windows.MessageBox.Show(images[0]);
+
         }
 
 
