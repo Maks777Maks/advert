@@ -24,6 +24,8 @@ namespace WpfApplication_Оголошення_
         public bool new_user = false;
         public ObservableCollection<User> _users = new ObservableCollection<User>();
 
+
+
         public User tmp = new User();
         public Autorization(ObservableCollection<User> users)
         {
@@ -35,6 +37,13 @@ namespace WpfApplication_Оголошення_
             Combo1.ItemsSource = city.Cityes;
             
             this.DataContext = tmp;
+
+
+
+
+
+
+
         }
 
         private void Enter_Click(object sender, RoutedEventArgs e)

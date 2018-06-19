@@ -62,6 +62,11 @@ namespace WpfApplication_Оголошення_
 
         public List<string> Images
         {
+            get { return images; }
+        }
+
+        public List<string> Images
+        {
             get {
                 System.Windows.MessageBox.Show("Getter  " + images[0]);
                 return images; }
@@ -78,6 +83,8 @@ namespace WpfApplication_Оголошення_
             _user = user;
             System.Windows.MessageBox.Show(images[0]);
         }
+
+
     }
 }
 

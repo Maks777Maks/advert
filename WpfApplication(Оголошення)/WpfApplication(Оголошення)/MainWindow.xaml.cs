@@ -33,7 +33,7 @@ namespace WpfApplication_Оголошення_
 
         public User tmp1 = null;
 
-        Ads ad = new Ads();
+        Ads ad= new Ads();
 
         public MainWindow()
         {
