@@ -178,5 +178,13 @@ namespace WpfApplication_Оголошення_
             //}
 
         }
+
+        private void view_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            MessageBox.Show((view.SelectedItem as Ads).Name);
+            ad = (view.SelectedItem as Ads);
+            Detailedinformation DI = new Detailedinformation(ad);
+            DI.ShowDialog();
+        }
     }
 }

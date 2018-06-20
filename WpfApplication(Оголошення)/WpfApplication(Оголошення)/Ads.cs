@@ -12,7 +12,9 @@ namespace WpfApplication_Оголошення_
         string name;
         string _catygory;
         string _text;
-        List<string> images = new List<string>();
+       public  string image1 { get; set; }
+        public string image2 { get; set; }
+        public string image3 { get; set; }
         int price;
         DateTime _date;
         public User _user;
@@ -54,34 +56,28 @@ namespace WpfApplication_Оголошення_
             name = "";
             _catygory = "";
             _text = "";
-            images = null;
+           
             price = 0;
             _date = DateTime.Now;
             _user = new User();
         }
 
-        public List<string> Images
-        {
-            get { return images; }
-        }
+       
 
-        public List<string> ImageS
-        {
-            get {
-                System.Windows.MessageBox.Show("Getter  " + images[0]);
-                return images; }
-        }
+       
 
-        public Ads(string name, string catigory, int price, string text, List<string> imag, DateTime dt, User user)
+        public Ads(string name, string catigory, int price, string text, string image1,string image2,string image3, DateTime dt, User user)
         {
             this.name = name;
             this.price = price;
             _catygory = catigory;
             _text = text;
-            images = imag;
+            this.image1 = image1;
+            this.image2 = image2;
+            this.image3 = image3;
             _date = dt;
             _user = user;
-            System.Windows.MessageBox.Show(images[0]);
+           
 
         }
 

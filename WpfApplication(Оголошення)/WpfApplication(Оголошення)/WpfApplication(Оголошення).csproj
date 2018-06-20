@@ -61,6 +61,9 @@
     </Compile>
     <Compile Include="Ads.cs" />
     <Compile Include="City.cs" />
+    <Compile Include="Detailedinformation.xaml.cs">
+      <DependentUpon>Detailedinformation.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Heading.cs" />
     <Compile Include="User.cs" />
     <Page Include="AddAd.xaml">
@@ -78,6 +81,10 @@
     <Page Include="Core.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Detailedinformation.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Icons.xaml">
       <Generator>MSBuild:Compile</Generator>

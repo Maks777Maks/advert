@@ -21,7 +21,12 @@ namespace WpfApplication_Оголошення_
     {
         User user;
         public Ads Ad = new Ads();
-        List<string> images = new List<string>();
+        string image1;
+        string image2;
+        string image3;
+
+        
+
         public AddAd(User user)
         {
             InitializeComponent();
@@ -48,7 +53,14 @@ namespace WpfApplication_Оголошення_
            
             if (true == ofd.ShowDialog())
             {
-                images.Add(ofd.FileName);
+                if (image1 == null)
+                    image1 = ofd.FileName;
+                if(image2 == null)
+                    image2 = ofd.FileName;
+                if (image3 == null)
+                    image3 = ofd.FileName;
+
+
                 BitmapImage bi = new BitmapImage(new Uri(ofd.FileName));
                 Image i = new Image();
                 i.Source = bi;
@@ -59,21 +71,17 @@ namespace WpfApplication_Оголошення_
 
         private void AddAdvert(object sender, RoutedEventArgs e)
         {
-            
 
-            //foreach (Button i in Grid1.Children)
-            //{
-            //    if ((i.Content as Image) != null)
-            //    {
-            //        images.Add((i.Content as Image).Source.ToString());
-            //    }
-            //}
-            //if (images.Count != 0)
-            foreach(var i in images)
+
+
+
+            if (Title.Text == "" || ComboBox1.SelectedItem.ToString() == "" || _price.Text == "" || Text.Text=="" )
             {
-                MessageBox.Show(i);
+                MessageBox.Show("Не все поля заполненны!!!");
+                return;
             }
-                Ad = new Ads(Title.Text, ComboBox1.SelectedItem.ToString(), int.Parse(_price.Text), Text.Text, images, new DateTime(), user);
+            Ad = new Ads(Title.Text, ComboBox1.SelectedItem.ToString(), int.Parse(_price.Text), Text.Text, image1,image2,image3, new DateTime(), user);
+            
             this.Close();
         }
     }
