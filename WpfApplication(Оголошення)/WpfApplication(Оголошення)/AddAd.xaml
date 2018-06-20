@@ -55,12 +55,12 @@
             <Button Name="Image2" Grid.Column="1" Grid.Row="0" Grid.RowSpan="2" Content="+" FontSize="50" Click="AddImage"/>
             <Button Name="Image3" Grid.Column="2" Grid.Row="0" Grid.RowSpan="2" Content="+" FontSize="50" Click="AddImage"/>
         </Grid>
-        <Expander Grid.Row="3" Header="Your contact details" FontSize="25" Grid.ColumnSpan="2" Name="Exp1">
+        <!--<Expander Grid.Row="3" Header="Your contact details" FontSize="25" Grid.ColumnSpan="2" Name="Exp1">
             <StackPanel Name="StackPanel1">
                 <TextBlock  Name="City"/>
                 <TextBlock  Name="Tel"/>
                 <TextBlock  Name="Login"/>
             </StackPanel>
-        </Expander>
+        </Expander>-->
     </Grid>
 </Window>

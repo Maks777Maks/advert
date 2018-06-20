@@ -15,9 +15,9 @@
     </Style>-->
 
     <DataTemplate x:Key="ListDataTemplate">
-        <StackPanel Style="{DynamicResource PanelStyle}" Height="210" Width="200" >
+        <StackPanel Style="{DynamicResource PanelStyle}" Height="220" Width="220" >
             <!--<Image Style="{DynamicResource ImageStyle}" Source="{Binding Path=Images[0]}"/>-->
-            <Image  Source="{Binding Path=image1}"/>
+            <Image  Source="{Binding Path=image1}" Height="140" Width="180"/>
             <TextBlock  FontSize="20" Text="{ Binding Path=Price}"/>
             <TextBlock  FontSize="20" Text="{ Binding Path=Name}"/>
             <TextBlock  FontSize="20" Text="{Binding Path=Date}"/>

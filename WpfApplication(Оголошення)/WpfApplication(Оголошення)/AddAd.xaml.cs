@@ -21,8 +21,8 @@ namespace WpfApplication_Оголошення_
     {
         User user;
         public Ads Ad = new Ads();
-        string image1;
-        string image2;
+        string image1="";
+        string image2="";
         string image3;
 
         
@@ -53,14 +53,16 @@ namespace WpfApplication_Оголошення_
            
             if (true == ofd.ShowDialog())
             {
-                if (image1 == null)
+                if (image1 == "")
                     image1 = ofd.FileName;
-                if(image2 == null)
-                    image2 = ofd.FileName;
-                if (image3 == null)
-                    image3 = ofd.FileName;
+                else
+                {
+                    if (image2 == "")
+                        image2 = ofd.FileName;
+                    else 
+                        image3 = ofd.FileName;
 
-
+                }
                 BitmapImage bi = new BitmapImage(new Uri(ofd.FileName));
                 Image i = new Image();
                 i.Source = bi;
@@ -80,6 +82,7 @@ namespace WpfApplication_Оголошення_
                 MessageBox.Show("Не все поля заполненны!!!");
                 return;
             }
+            else
             Ad = new Ads(Title.Text, ComboBox1.SelectedItem.ToString(), int.Parse(_price.Text), Text.Text, image1,image2,image3, new DateTime(), user);
             
             this.Close();
