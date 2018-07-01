@@ -6,10 +6,13 @@
         xmlns:local="clr-namespace:WpfApplication_Оголошення_"
         mc:Ignorable="d"
         Title="Detailedinformation" Height="450" Width="800">
-    <Grid>
+    <Grid Name="grid">
         <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*">
+            </RowDefinition>
+           
+
 
 
         </Grid.RowDefinitions>
@@ -23,6 +26,12 @@
         <Button Grid.Column="0" Grid.Row="0" Content="&lt;" Opacity="0.1" FontSize="80" Click="Button2_Click"/>
         <Button Grid.Column="1" Grid.Row="0" Content="&gt;" Opacity="0.1" FontSize="80" Click="Button1_Click" />
         <ListBox SelectionChanged="List1_SelectionChanged" Grid.Column="0" Grid.Row="1" Name="List1"  Visibility="Collapsed" />
+        <TextBlock Name="name" Grid.Row="1" Grid.Column="0" Text= "{Binding Path=Name}" FontSize="20" Height="30" VerticalAlignment="Top"/>
+        <TextBlock Name="categorie" Grid.Row="1" Grid.Column="1" Text="{Binding Path=_Catygory}" FontSize="20" VerticalAlignment="Top"/>
+        <TextBlock Name="city" Grid.Row="1" Grid.Column="0" Text="{Binding Path=City}" FontSize="20"  VerticalAlignment="Center" />
+        <TextBlock Name="price" Grid.Row="1" Grid.Column="1"  FontSize="20" Text="{Binding Path=Price}" VerticalAlignment="Center"/>
+        <TextBlock Name="description" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" VerticalAlignment="Bottom" Height="80" Text="{Binding Path=_Text}" FontSize="16"/>
+
 
 
 

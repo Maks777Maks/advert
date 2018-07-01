@@ -33,18 +33,10 @@ namespace WpfApplication_Оголошення_
             List1.Items.Add(Ad.image1);
             List1.Items.Add(Ad.image2);
             List1.Items.Add(Ad.image3);
+            grid.DataContext = Ad;
             
 
-            //foreach (string i in List1.Items)
-            //{
-            //    if (i != null)
-            //    {
-            //        BitmapImage BI = new BitmapImage(new Uri(i));
-            //        Image1.Source = BI;
-            //        List1.SelectedItem = i;
-            //        break;
-            //    }
-            //}
+            
 
             List1.SelectedIndex = 0;
 

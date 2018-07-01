@@ -12,10 +12,11 @@ namespace WpfApplication_Оголошення_
         string name;
         string _catygory;
         string _text;
-       public  string image1 { get; set; }
+        public  string image1 { get; set; }
         public string image2 { get; set; }
         public string image3 { get; set; }
         int price;
+        public string City { get; set; }
         DateTime _date;
         public User _user;
 

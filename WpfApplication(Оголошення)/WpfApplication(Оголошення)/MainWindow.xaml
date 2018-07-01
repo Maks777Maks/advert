@@ -43,10 +43,10 @@
         <ComboBox SelectedIndex="0" Name="combo_city" Margin="10,32,10,43" Grid.Column="2" Grid.Row="1" Height="Auto"/>
         <ComboBox SelectedIndex="0" Name="combo_heading" Margin="10,32,10,43" Grid.Column="3" Grid.Row="1" Height="Auto"/>
         <Button Name="Search" Grid.Column="4" Grid.Row="1" Height="Auto" Content="Search" Margin="49,32,52,43" Click="Click_Search" RenderTransformOrigin="0.791,0.333"/>
-        <ListView  ScrollViewer.HorizontalScrollBarVisibility="Disabled" Name="view" HorizontalContentAlignment="Center" Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="4" Grid.RowSpan="4"  ItemTemplate="{DynamicResource ListDataTemplate}" MouseDoubleClick="view_MouseDoubleClick">
+        <ListView  ScrollViewer.HorizontalScrollBarVisibility="Disabled" Name="view"  Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="4" Grid.RowSpan="4"  ItemTemplate="{DynamicResource ListDataTemplate}" MouseDoubleClick="view_MouseDoubleClick">
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>
-                    <WrapPanel HorizontalAlignment="Center" Width="800" ></WrapPanel>
+                    <StackPanel  Width="800" ></StackPanel>
                 </ItemsPanelTemplate>
             </ListView.ItemsPanel>
         </ListView>

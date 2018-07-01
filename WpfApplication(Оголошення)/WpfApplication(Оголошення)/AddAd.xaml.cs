@@ -24,8 +24,9 @@ namespace WpfApplication_Оголошення_
         string image1="";
         string image2="";
         string image3;
+        string City;
+      
 
-        
 
         public AddAd(User user)
         {
@@ -35,6 +36,9 @@ namespace WpfApplication_Оголошення_
             ComboBox1.ItemsSource = heading.Headings;
 
             this.user = user;
+            City = user.City;
+            Image2.Visibility = Visibility.Collapsed;
+            Image3.Visibility = Visibility.Collapsed;
         }
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
@@ -54,12 +58,20 @@ namespace WpfApplication_Оголошення_
             if (true == ofd.ShowDialog())
             {
                 if (image1 == "")
+                {
                     image1 = ofd.FileName;
+                    Image2.Visibility = Visibility.Visible;
+                    
+                }
+
                 else
                 {
                     if (image2 == "")
+                    {
                         image2 = ofd.FileName;
-                    else 
+                        Image3.Visibility = Visibility.Visible;
+                    }
+                    else
                         image3 = ofd.FileName;
 
                 }
@@ -75,7 +87,7 @@ namespace WpfApplication_Оголошення_
         {
 
 
-
+            
 
             if (Title.Text == "" || ComboBox1.SelectedItem.ToString() == "" || _price.Text == "" || Text.Text=="" )
             {
@@ -84,7 +96,7 @@ namespace WpfApplication_Оголошення_
             }
             else
             Ad = new Ads(Title.Text, ComboBox1.SelectedItem.ToString(), int.Parse(_price.Text), Text.Text, image1,image2,image3, new DateTime(), user);
-            
+            Ad.City = this.City;
             this.Close();
         }
     }

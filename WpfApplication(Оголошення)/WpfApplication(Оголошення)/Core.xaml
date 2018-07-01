@@ -15,14 +15,26 @@
     </Style>-->
 
     <DataTemplate x:Key="ListDataTemplate">
-        <StackPanel Style="{DynamicResource PanelStyle}" Height="220" Width="220" >
-            <!--<Image Style="{DynamicResource ImageStyle}" Source="{Binding Path=Images[0]}"/>-->
-            <Image  Source="{Binding Path=image1}" Height="140" Width="180"/>
-            <TextBlock  FontSize="20" Text="{ Binding Path=Price}"/>
-            <TextBlock  FontSize="20" Text="{ Binding Path=Name}"/>
-            <TextBlock  FontSize="20" Text="{Binding Path=Date}"/>
-            <!--<TextBlock Style="{DynamicResource TextBlockStyle}" IsEnabled="False" Text="{Binding Path=_Text}"/>-->
-        </StackPanel>
+        <Grid  Height="160" >
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition Width="600"/>
+                <ColumnDefinition/>
+                
+
+
+            </Grid.ColumnDefinitions>
+
+            <Image  Source="{Binding Path=image1}"  Grid.Column="0" HorizontalAlignment="Left"  />
+            <TextBlock  FontSize="20" Text="{ Binding Path=Price}" Grid.Column="2" HorizontalAlignment="Right"
+                        />
+            <StackPanel Grid.Column="1" HorizontalAlignment="Left">
+            <TextBlock  FontSize="20" Text="{ Binding Path=Name}" Height="120"  />
+                <TextBlock  FontSize="13" Text="{Binding Path=City}"  />
+                <TextBlock  FontSize="13" Text="{Binding Path=Date}"  />
+            </StackPanel>
+        </Grid>
     </DataTemplate>
 
     <Style  x:Key="PanelStyle" TargetType="StackPanel">
